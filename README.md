@@ -1,6 +1,15 @@
 # Pix Wallet Service 
 
-> Microserviço de **carteira digital com suporte a Pix**, construído com **Spring Boot 3**, **Java 17** e **PostgreSQL**, seguindo princípios de **Clean Architecture**, **idempotência** e **consistência sob concorrência**.
+> Microserviço de carteira digital com suporte a Pix, desenvolvido com Spring Boot 3, Java 17 e PostgreSQL,
+> seguindo os princípios de Clean Architecture, DDD e transações ACID para garantir consistência sob concorrência e 
+> idempotência em operações financeiras críticas. A solução foi projetada com foco em alta confiabilidade e rastreabilidade, incluindo:
+> Arquitetura modular em camadas (domain, application, infrastructure, api), com casos de uso isolados e testes automatizados; 
+> Controle de concorrência via pessimistic locking (SELECT FOR UPDATE) e optimistic versioning (@Version);
+> Ledger contábil imutável para auditoria e reconstrução de saldos históricos;
+> Idempotência aplicada a transferências Pix e webhooks, garantindo efeito “exactly-once”;
+> Documentação interativa com Swagger / OpenAPI, disponível em /swagger-ui.html;
+> Monitoramento e métricas com Spring Boot Actuator e logs estruturados em formato JSON;
+> Testes integrados com H2 simulando o ambiente PostgreSQL, validando fluxos ponta a ponta (criação de carteira, depósito e transferência Pix)..
 
 ---
 
