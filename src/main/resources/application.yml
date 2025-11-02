@@ -19,7 +19,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  # para o desafio; em produção -> validate + migração
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
