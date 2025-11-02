@@ -1,0 +1,58 @@
+server:
+  port: 8096
+
+spring:
+  application:
+    name: pix-wallet-service
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:${DB_PORT:5432}/${DB_NAME:postgres}}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 2000
+      idle-timeout: 10000
+      max-lifetime: 300000
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # para o desafio; em produção -> validate + migração
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc.lob.non_contextual_creation: true
+        default_schema: public
+    open-in-view: false
+    show-sql: false
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.type.descriptor.sql.BasicBinder: WARN
+
+  pattern:
+    console: >
+      {"timestamp":"%d{yyyy-MM-dd'T'HH:mm:ss.SSSX}",
+       "level":"%p",
+       "logger":"%logger{36}",
+       "thread":"%t",
+       "message":"%m",
+       "exception":"%replace(%xThrowable){'[\r\n]+',' | '}"}

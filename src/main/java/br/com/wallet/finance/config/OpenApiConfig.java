@@ -1,4 +1,4 @@
-package com.meva.finance.config;
+package br.com.wallet.finance.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ public class OpenApiConfig {
     public GroupedOpenApi api() {
         return GroupedOpenApi.builder()
                 .group("api")
-                .packagesToScan("com.meva.finance")
+                .packagesToScan("br.com.wallet.finance")
                 .build();
     }
 
